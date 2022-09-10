@@ -11,14 +11,21 @@
 <body>
     <h1>Things I need to do</h1>
     <table>
-        {%for items in item%}
+        {% for item in items %}
         <tr>
-            <td>{{item.name}}</td>
-            <td>{{item.done}}</td>
+            {% if item.done %}
+            <td><strike>{{ item.name }}</strike></td>
+            {% else %}
+            <td>{{ item.name }}</td>
+            {% endif %}
+        </tr>
+        {% empty %}
+        <tr>
+            <td>You have nothing to do</td>
         </tr>
         {% endfor %}
     </table>
-
+    <a href="/add">Add an Item</a>
 </body>
 
 </html>
